@@ -280,7 +280,7 @@ export function PriceInsightsContent() {
                         </h3>
                         <Info className="w-5 h-5 text-gray-400" />
                         <div className="absolute right-0 top-8 w-64 p-3 bg-gray-800 text-white text-xs rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left">
-                            동일 조건 (노선, 출발 시간, 등급 등) 기반 실제 발권 데이터 기준입니다.
+                            비슷한 조건 (노선, 출발 시간, 등급 등) 기반 실제 발권 데이터 기준입니다.
                         </div>
                     </div>
 
