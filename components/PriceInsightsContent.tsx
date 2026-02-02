@@ -24,13 +24,14 @@ const generateTrendData = () => {
     const data = [];
 
     // Goal: 
-    // Start (30 days ago): High (~36.5man)
-    // 10 days ago: Gap/Valley (Global Min ~26.4man)
+    // 30 days ago: Start (~34man)
+    // 22 days ago: Peak (High ~36.5man) - requested
+    // 10 days ago: Valley (Low ~26.4man)
     // Today: Rebound to 272,300
 
-    // We use a piecewise parabolic curve for smooth joining at the valley
+    const startPrice = 340000;
+    const maxPrice = 365000; // 22 days ago
     const minPrice = 264000; // 10 days ago
-    const startPrice = 365000; // 30 days ago
     const endPrice = 272300; // Today
 
     for (let i = 30; i >= 0; i--) {
@@ -38,23 +39,31 @@ const generateTrendData = () => {
         const x = 30 - i; // 0 to 30
         let price = 0;
 
-        // Valley is at 10 days ago => i=10 => x=20
-        if (x <= 20) {
-            // Decaying from Start to Min
-            // Normalized t from 0 to 1 as x goes 0 to 20 (t=1 at x=0)
-            const t = (20 - x) / 20;
-            price = minPrice + (startPrice - minPrice) * Math.pow(t, 2);
+        // X=0 is 30 days ago | X=8 is 22 days ago | X=20 is 10 days ago | X=30 is Today
+
+        if (x <= 8) {
+            // Segment 1: Rise from Start to Max (0 -> 8)
+            const t = x / 8; // 0 to 1
+            // Simple ease-out quad
+            price = startPrice + (maxPrice - startPrice) * (1 - Math.pow(1 - t, 2));
+        } else if (x <= 20) {
+            // Segment 2: Drop from Max to Min (8 -> 20)
+            const t = (x - 8) / 12; // 0 to 1
+            // Smooth S-curve (Cosine interpolation)
+            const cosT = (1 - Math.cos(t * Math.PI)) / 2;
+            price = maxPrice - (maxPrice - minPrice) * cosT;
         } else {
-            // Rising from Min to End
-            // Normalized t from 0 to 1 as x goes 20 to 30
-            const t = (x - 20) / 10;
+            // Segment 3: Rise from Min to End (20 -> 30)
+            const t = (x - 20) / 10; // 0 to 1
+            // Quadratic ease-in-out
             price = minPrice + (endPrice - minPrice) * Math.pow(t, 2);
         }
 
         // Add minimal natural noise
         price += (Math.random() - 0.5) * 300;
 
-        // Force precise touchpoints for key values
+        // Force precise key points
+        if (i === 22) price = 365000;  // Max (22 days ago)
         if (i === 0) price = 272300;   // Today
 
         data.push({

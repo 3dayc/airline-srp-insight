@@ -61,7 +61,7 @@ export function FloatingPriceButton() {
                                 onClick={() => setIsModalOpen(false)}
                                 className="bg-[#4e6bf5] hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm transition-colors w-full md:w-auto"
                             >
-                                확인 완료, 예약하러 가기
+                                예약하러 가기
                             </button>
                         </div>
 
