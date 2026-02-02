@@ -118,39 +118,48 @@ const PriceLabel = (props: any) => {
 
     const isMax = value === maxVal;
 
+    // Adjusted for mobile safety:
+    // Max (Top-Centerish): Rise above the peak. 
+    // Min (Bottom-Centerish): Sit below the valley.
+    // Reduced extreme horizontal shifts (dx) to prevent falling off screen edges or looking detached.
+
     const config = isMax ? {
         text: "최고가",
         textColor: "#ef4444",
         bgColor: "#fff0f0",
         borderColor: "#fecaca",
-        // Move closer to dot
-        dx: 12,
-        dy: -36
+        // Position: Top Right of dot, closer to prevent drifting
+        dx: 10,
+        dy: -40
     } : {
         text: "최저가",
         textColor: "#16a34a",
         bgColor: "#f0fdf4",
         borderColor: "#bbf7d0",
-        // Position adjustment: Move LEFT strongly to avoid right-edge overflow
-        // And slightly below
-        dx: -85,
-        dy: 12
+        // Position: Bottom Left (slightly) of dot to sit nicely in the V-shape valley
+        // Removing the extreme -85 shift which breaks on mobile
+        dx: -40,
+        dy: 20
     };
 
     return (
         <g transform={`translate(${x},${y})`}>
             {/* Reduced width/height for compact size and overflow handling */}
-            <foreignObject x={config.dx} y={config.dy} width="120" height="32" style={{ overflow: "visible" }}>
+            <foreignObject x={config.dx} y={config.dy} width="100" height="40" style={{ overflow: "visible" }}>
                 <div
-                    className="flex items-center gap-1.5 px-2 py-1 rounded border shadow-sm whitespace-nowrap w-fit bg-opacity-95 backdrop-blur-[1px]"
-                    style={{
-                        backgroundColor: config.bgColor,
-                        borderColor: config.borderColor,
-                    }}
+                    className="flex flex-col items-start justify-center backdrop-blur-[1px]"
                 >
-                    <span className="font-bold text-[10px]" style={{ color: config.textColor }}>{config.text}</span>
-                    <div className="h-2.5 w-px bg-gray-300"></div>
-                    <span className="font-bold text-xs text-gray-900 tracking-tight">{value.toLocaleString()}원</span>
+                    <div
+                        className="flex items-center gap-1.5 px-2 py-1 rounded border shadow-sm whitespace-nowrap bg-opacity-95"
+                        style={{
+                            backgroundColor: config.bgColor,
+                            borderColor: config.borderColor,
+                        }}
+                    >
+                        <span className="font-bold text-[10px]" style={{ color: config.textColor }}>{config.text}</span>
+                        <div className="h-2.5 w-px bg-gray-300"></div>
+                        <span className="font-bold text-xs text-gray-900 tracking-tight">{value.toLocaleString()}원</span>
+                    </div>
                 </div>
             </foreignObject>
         </g>

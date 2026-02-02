@@ -39,7 +39,7 @@ export function PriceInsights() {
       <div
         className={cn(
           "transition-all duration-300 ease-in-out overflow-hidden bg-white",
-          isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <div className="border-t border-gray-100">
