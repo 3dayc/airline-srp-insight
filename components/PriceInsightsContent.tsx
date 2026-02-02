@@ -180,7 +180,7 @@ export function PriceInsightsContent() {
                         <Info className="w-5 h-5 text-gray-400" />
 
                         <div className="absolute left-full top-0 ml-2 w-64 p-3 bg-gray-800 text-white text-xs rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                            지난 30일 동안의 최저가 추이를 분석하여 현재 가격이 얼마나 저렴한지 알려드립니다.
+                            지난 30일 동안의 최저가 추이를 분석하여 현재 가격의 흐름을 알 수 있습니다.
                         </div>
                     </div>
 
@@ -278,7 +278,7 @@ export function PriceInsightsContent() {
                         </h3>
                         <Info className="w-5 h-5 text-gray-400" />
                         <div className="absolute right-0 top-8 w-64 p-3 bg-gray-800 text-white text-xs rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left">
-                            최근 7일간 동일 조건(FSC 오전 출발 등) 실제 결제 데이터 기준입니다.
+                            동일 조건 (노선, 출발 시간, 등급 등) 기반 실제 발권 데이터 기준입니다.
                         </div>
                     </div>
 
@@ -336,7 +336,7 @@ export function PriceInsightsContent() {
                                 <div className="w-4 h-4 bg-[#ff6902] rounded-full border-2 border-white shadow-sm z-10 relative"></div>
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#ff6902] rounded-full opacity-20 animate-ping"></div>
                             </div>
-                            <div className="mt-1 text-xs font-bold text-gray-800 bg-white/80 px-1 rounded backdrop-blur-sm">현재 최저가</div>
+                            <div className="mt-1 text-xs font-bold text-gray-800 bg-white/80 px-1 rounded backdrop-blur-sm">오늘 최저가</div>
                         </div>
 
                     </div>
@@ -351,7 +351,7 @@ export function PriceInsightsContent() {
                     </div>
                     <div className="bg-transparent space-y-3">
                         <h4 className="text-xl font-bold text-gray-900 leading-snug">
-                            와! 지금 이 티켓, 비슷한 조건의 항공권 평균보다 <span className="text-blue-600">30,000원</span>이나 더 아낄 수 있어요.
+                            비슷한 조건의 항공권 구매 평균보다 <span className="text-blue-600">28,300원</span>이나 더 아낄 수 있어요.
                         </h4>
 
                         <div className="w-full h-px bg-blue-100/50 my-2"></div>
@@ -359,7 +359,7 @@ export function PriceInsightsContent() {
                         <p className="text-gray-700 leading-relaxed text-sm md:text-base">
                             지금 평균 중위값 범위보다 <span className="font-bold text-blue-600">낮은 가격</span>이면서
                             최근 30일 내 <span className="font-bold text-blue-600">최저가 수준</span>에 근접해 있습니다.<br className="hidden md:block" />
-                            보통 출발 <span className="font-bold text-gray-900">15일 전</span>부터 가격이 오르는 경향이 있으니,
+                            현재 출발 <span className="font-bold text-gray-900">32일 전</span>으로 이 시기부터 가격이 오르는 경향이 있으니,
                             <span className="font-bold underline decoration-blue-300 decoration-2 underline-offset-2 ml-1">지금 예약하시는 것을 추천드려요!</span>
                         </p>
                     </div>
