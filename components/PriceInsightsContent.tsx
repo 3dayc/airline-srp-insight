@@ -128,18 +128,20 @@ const PriceLabel = (props: any) => {
         textColor: "#ef4444",
         bgColor: "#fff0f0",
         borderColor: "#fecaca",
-        // Position: Top Right of dot, closer to prevent drifting
-        dx: 10,
-        dy: -40
+        // Position: Top-Center
+        // Center the 100px box (dx: -50)
+        // Move up (dy: -45)
+        dx: -50,
+        dy: -45
     } : {
         text: "최저가",
         textColor: "#16a34a",
         bgColor: "#f0fdf4",
         borderColor: "#bbf7d0",
-        // Position: Bottom Left (slightly) of dot to sit nicely in the V-shape valley
-        // Removing the extreme -85 shift which breaks on mobile
-        dx: -40,
-        dy: 20
+        // Position: Top-Center
+        // Moving MIN label UP to avoid hitting X-Axis labels
+        dx: -50,
+        dy: -45
     };
 
     return (
@@ -147,7 +149,7 @@ const PriceLabel = (props: any) => {
             {/* Reduced width/height for compact size and overflow handling */}
             <foreignObject x={config.dx} y={config.dy} width="100" height="40" style={{ overflow: "visible" }}>
                 <div
-                    className="flex flex-col items-start justify-center backdrop-blur-[1px]"
+                    className="flex flex-col items-center justify-center backdrop-blur-[1px]"
                 >
                     <div
                         className="flex items-center gap-1.5 px-2 py-1 rounded border shadow-sm whitespace-nowrap bg-opacity-95"
