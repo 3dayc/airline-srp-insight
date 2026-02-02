@@ -357,9 +357,9 @@ export function PriceInsightsContent() {
                         <div className="w-full h-px bg-blue-100/50 my-2"></div>
 
                         <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                            지금 평균 중위값 범위보다 <span className="font-bold text-blue-600">낮은 가격</span>이면서
+                            오늘 최저가는 평균 중위값 범위보다 <span className="font-bold text-blue-600">낮은 가격</span>이면서
                             최근 30일 내 <span className="font-bold text-blue-600">최저가 수준</span>에 근접해 있습니다. <br className="hidden md:block" />
-                            현재 출발 <span className="font-bold text-gray-900">32일 전</span>으로 이 시기부터 가격이 오르는 경향이 있으니,
+                            현재 출발 <span className="font-bold text-gray-900">32일 전</span>으로 이 시기부터는 가격이 오르는 경향이 있으니,
                             <span className="font-bold underline decoration-blue-300 decoration-2 underline-offset-2 ml-1">지금 예약하시는 것을 추천드려요!</span>
                         </p>
                     </div>
